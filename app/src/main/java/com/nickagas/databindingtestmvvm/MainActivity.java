@@ -1,14 +1,16 @@
 package com.nickagas.databindingtestmvvm;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    ArrayList<SimpleObject> objects;
+    SimpleObjectAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView=(RecyclerView) findViewById(R.id.recv);
 
-        ArrayList<SimpleObject> objects=new ArrayList<>();
+
+         objects=new ArrayList<>();
 
         for(int i=0;i<10;i++){
             SimpleObject simpleObject=new SimpleObject();
@@ -29,11 +32,19 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        SimpleObjectAdapter mAdapter=new SimpleObjectAdapter(objects);
+        mAdapter=new SimpleObjectAdapter(objects);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);
 
 
+    }
+
+    public void deleteLastObject(View v){
+        if(objects.size()>0)
+        {
+            objects.remove(objects.size()-1);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 }
