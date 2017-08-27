@@ -7,9 +7,7 @@
         <variable
             name="simpleOject"
             type="com.nickagas.databindingtestmvvm.SimpleObject"/>
-        <variable
-            name="buttonHandler"
-            type="com.nickagas.databindingtestmvvm.ThirdActivityHandler"/>
+
     </data>
 
 
@@ -30,13 +28,7 @@
             android:id="@+id/age"
             android:text="@{simpleOject.age}" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-
-            android:onClick="@{buttonHandler::onClickButton}"/>
 
 
     </LinearLayout>
