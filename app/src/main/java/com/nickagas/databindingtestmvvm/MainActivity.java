@@ -19,15 +19,19 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<SimpleObject> objects=new ArrayList<>();
 
-        for(int i=0;i<100;i++){
+        for(int i=0;i<10;i++){
             SimpleObject simpleObject=new SimpleObject();
             simpleObject.name="Nikolaras";
             simpleObject.setAge(i);
             objects.add(simpleObject);
 
         }
+
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         SimpleObjectAdapter mAdapter=new SimpleObjectAdapter(objects);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);
 
 
